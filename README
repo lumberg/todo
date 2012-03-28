@@ -1,0 +1,18 @@
+# Example of importing encrypted files from S3 into Tddium
+#
+# 1. Create a new, read-only IAM identity with access just to
+#    the bucket and prefix that will host your secure blobs
+#
+# 2. Use s3store to upload an encrypted blob; you will need to use AWS
+#    keys with write permissions for the bucket
+#
+# 3. Use `tddium config:add` to add configuration values for your new
+#    read-only IAM identity to your suite
+#
+#   a. TDDIUM_S3_REGION		- AWS S3 region, defaults to us-east-1
+#   b. TDDIUM_S3_KEY_ID		- AWS S3 secret key ID
+#   c. TDDIUM_S3_SECRET		- AWS S3 secret access key
+#   d. TDDIUM_S3_PASSPHRASE	- OpenSSL AES passphrase
+#
+# 4. Download and decrypt the blob and install it from a pre_hook task.
+#    See lib/tasks/tddium.rake for an example.
